@@ -297,6 +297,8 @@
             var $nextLi = $qandaCol.find('li.current')
                 .removeClass('current');
                 $(questionsHtml).insertBefore($nextLi);
+
+            if (!answers[currentGoupId]) answers[currentGoupId] = {};
                 
             updateProgressBar();
             scrollToNextQuestion();
