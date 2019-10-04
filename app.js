@@ -109,10 +109,18 @@
             $progressCol.find('.' + currentGoupId + ' .progress-bar')
                 .animate(
                     {width: numAnswers / totalQuestions * 100 + '%'}, 
-                    {duration: 200, easing:'linear'}
+                    {
+                        duration: 200, 
+                        easing:'linear',
+                        complete:  function() { 
+                            if (numAnswers === totalQuestions) {
+                                $progressCol.find('li.' + currentGoupId).addClass('done');
+                            }
+                         } 
+                    }
                 );
             
-            $progressCol.find('.' + currentGoupId + ' span').text(numAnswers + ' of ' + totalQuestions)
+            $progressCol.find('.' + currentGoupId + ' span').text(numAnswers + ' of ' + totalQuestions);
         }
 
         function setActiveProgressBar() {
