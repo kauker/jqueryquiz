@@ -230,7 +230,9 @@
             updateProgressBar();
 
             if ($nextLi.hasClass('final-message')) {
-                var numAnsweredGroups = Object.keys(answers).length,
+                var numAnsweredGroups = Object.keys(answers).filter(function(groupId) {
+                    return !groups[groupId].hidden
+                }).length,
                     numTotalGroups = Object.keys(groups).filter(function(groupId) {
                         return !groups[groupId].hidden
                     }).length;
